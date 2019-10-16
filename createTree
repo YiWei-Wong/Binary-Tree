@@ -1,0 +1,57 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+struct Node
+{
+	char val;
+	Node* leftChild;
+	Node* rightChild;
+	Node()
+	{
+		leftChild = NULL;
+		rightChild = NULL;
+	}
+ };
+ 
+ class binaryTree
+ {
+ 	private:
+ 		Node* root;
+ 	public:
+ 		Node* createTree()
+ 		{
+ 			char tp;
+ 			cin>>tp;
+ 			Node* pNode;
+ 			if(tp=='#')
+ 				pNode = NULL;
+ 			else
+ 			{
+ 				pNode = new Node;
+ 				pNode->val = tp;
+ 				pNode->leftChild = createTree();
+ 				pNode->rightChild = createTree(); 
+			 }
+			 return pNode;
+		 }
+		 
+		 void PreOrder(Node* r)
+		 {
+		 	if(r)
+		 	{
+		 		cout<<r->val;
+		 		PreOrder(r->leftChild);
+		 		PreOrder(r->rightChild);
+		 	}
+		 }
+		 	 
+};
+
+int main()
+{
+	Node* p;
+	binaryTree a;
+	p = a.createTree();
+	a.PreOrder(p);
+	cout<<endl;
+  }  
